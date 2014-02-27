@@ -42,10 +42,10 @@ INSTALLED_APPS = (
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    #'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    #'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
 ROOT_URLCONF = 'mysite.urls'
@@ -90,4 +90,5 @@ STATIC_URL = '/static/'
 # template dir
 # Don't forget to use absolute paths, not relative paths.
 TEMPLATE_DIRS = ('/home/shu/git/PlayDjango/mysite/mysite/templates',
+                 '/home/shu/git/PlayDjango/mysite/books'
                  )

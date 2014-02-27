@@ -5,17 +5,29 @@ import datetime;
 from django.template import Context, Template;
 from django.template.loader import get_template;
 from django.shortcuts import render;
+
+# a function displaying meta information
+def display_meta(request):
+    values = request.META.items();
+    sorted(values);
+    html = [];
+    for k,v in values:
+        html.append('<tr><td>%s</td><td>%s</td></tr>' %(k, v))
+    return HttpResponse('<table>%s</table>' %'\n'.join(html));
+    
+
 #This is a view function
 def hello(request):
-    return HttpResponse("Hello");
+    ua = request.META.get("HTTP_USER_AGENT", "Unknown")
+    return HttpResponse("Your browswer is %s!" %ua);
 
-def welcome(requeset):
-    return HttpResponse('Welcome!');
-
+def welcome(request):
+    return display_meta(request);
+    
 #Second view, dynamic content
 def current_datetime(request):
-    now = datetime.datetime.now();
     
+    now = datetime.datetime.now();
     #html = "<html><body>It is now %s </body></html>" %now;
     #return HttpResponse(html);
     
